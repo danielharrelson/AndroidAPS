@@ -137,8 +137,8 @@ class LoopDialog : DaggerDialogFragment() {
         if (_binding == null) return
         aapsLogger.debug("UpdateGUI from $from")
         val pumpDescription: PumpDescription = activePlugin.activePump.pumpDescription
-        val closedLoopAllowed = objectivesPlugin.isClosedLoopAllowed(Constraint(true))
-        val lgsEnabled = objectivesPlugin.isLgsAllowed(Constraint(true))
+        val closedLoopAllowed = objectivesPlugin.isClosedLoopAllowed(Constraint(false))
+        val lgsEnabled = objectivesPlugin.isLgsAllowed(Constraint(false))
         val apsMode = sp.getString(R.string.key_aps_mode, "open")
         if (profileFunction.isProfileValid("LoopDialogUpdateGUI")) {
             if (loopPlugin.isEnabled(PluginType.LOOP)) {

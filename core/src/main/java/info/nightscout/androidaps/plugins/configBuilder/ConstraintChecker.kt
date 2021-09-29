@@ -13,28 +13,28 @@ import javax.inject.Singleton
 class ConstraintChecker @Inject constructor(private val activePlugin: ActivePluginProvider) : ConstraintsInterface {
 
     fun isLoopInvocationAllowed(): Constraint<Boolean> =
-        isLoopInvocationAllowed(Constraint(true))
+        isLoopInvocationAllowed(Constraint(false))
 
     fun isClosedLoopAllowed(): Constraint<Boolean> =
-        isClosedLoopAllowed(Constraint(true))
+        isClosedLoopAllowed(Constraint(false))
 
     fun isAutosensModeEnabled(): Constraint<Boolean> =
-        isAutosensModeEnabled(Constraint(true))
+        isAutosensModeEnabled(Constraint(false))
 
     fun isAMAModeEnabled(): Constraint<Boolean> =
-        isAMAModeEnabled(Constraint(true))
+        isAMAModeEnabled(Constraint(false))
 
     fun isSMBModeEnabled(): Constraint<Boolean> =
-        isSMBModeEnabled(Constraint(true))
+        isSMBModeEnabled(Constraint(false))
 
     fun isUAMEnabled(): Constraint<Boolean> =
-        isUAMEnabled(Constraint(true))
+        isUAMEnabled(Constraint(false))
 
     fun isAdvancedFilteringEnabled(): Constraint<Boolean> =
-        isAdvancedFilteringEnabled(Constraint(true))
+        isAdvancedFilteringEnabled(Constraint(false))
 
     fun isSuperBolusEnabled(): Constraint<Boolean> =
-        isSuperBolusEnabled(Constraint(true))
+        isSuperBolusEnabled(Constraint(false))
 
     fun getMaxBasalAllowed(profile: Profile): Constraint<Double> =
         applyBasalConstraints(Constraint(Constants.REALLYHIGHBASALRATE), profile)
@@ -55,7 +55,7 @@ class ConstraintChecker @Inject constructor(private val activePlugin: ActivePlug
         applyMaxIOBConstraints(Constraint(Constants.REALLYHIGHIOB))
 
     fun isAutomationEnabled(): Constraint<Boolean> =
-        isAutomationEnabled(Constraint(true))
+        isAutomationEnabled(Constraint(false))
 
     override fun isLoopInvocationAllowed(value: Constraint<Boolean>): Constraint<Boolean> {
         val constraintsPlugins = activePlugin.getSpecificPluginsListByInterface(ConstraintsInterface::class.java)
