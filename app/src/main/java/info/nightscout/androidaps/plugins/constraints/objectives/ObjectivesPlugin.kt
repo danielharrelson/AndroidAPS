@@ -105,16 +105,16 @@ class ObjectivesPlugin @Inject constructor(
             objective.startedOn = 0
             objective.accomplishedOn = 0
         }
-        sp.putBoolean(R.string.key_ObjectivesbgIsAvailableInNS, false)
-        sp.putBoolean(R.string.key_ObjectivespumpStatusIsAvailableInNS, false)
+        sp.putBoolean(R.string.key_ObjectivesbgIsAvailableInNS, true)
+        sp.putBoolean(R.string.key_ObjectivespumpStatusIsAvailableInNS, true)
         sp.putInt(R.string.key_ObjectivesmanualEnacts, 0)
-        sp.putBoolean(R.string.key_objectiveuseprofileswitch, false)
-        sp.putBoolean(R.string.key_objectiveusedisconnect, false)
-        sp.putBoolean(R.string.key_objectiveusereconnect, false)
-        sp.putBoolean(R.string.key_objectiveusetemptarget, false)
-        sp.putBoolean(R.string.key_objectiveuseactions, false)
-        sp.putBoolean(R.string.key_objectiveuseloop, false)
-        sp.putBoolean(R.string.key_objectiveusescale, false)
+        sp.putBoolean(R.string.key_objectiveuseprofileswitch, true)
+        sp.putBoolean(R.string.key_objectiveusedisconnect, true)
+        sp.putBoolean(R.string.key_objectiveusereconnect, true)
+        sp.putBoolean(R.string.key_objectiveusetemptarget, true)
+        sp.putBoolean(R.string.key_objectiveuseactions, true)
+        sp.putBoolean(R.string.key_objectiveuseloop, true)
+        sp.putBoolean(R.string.key_objectiveusescale, true)
     }
 
     fun completeObjectives(activity: FragmentActivity, request: String) {
@@ -159,37 +159,37 @@ class ObjectivesPlugin @Inject constructor(
      */
     override fun isLoopInvocationAllowed(value: Constraint<Boolean>): Constraint<Boolean> {
         if (!objectives[FIRST_OBJECTIVE].isStarted)
-            value.set(aapsLogger, false, String.format(resourceHelper.gs(R.string.objectivenotstarted), FIRST_OBJECTIVE + 1), this)
+            value.set(aapsLogger, true, String.format(resourceHelper.gs(R.string.objectivenotstarted), FIRST_OBJECTIVE + 1), this)
         return value
     }
 
     fun isLgsAllowed(value: Constraint<Boolean>): Constraint<Boolean> {
         if (!objectives[MAXBASAL_OBJECTIVE].isStarted)
-            value.set(aapsLogger, false, String.format(resourceHelper.gs(R.string.objectivenotstarted), MAXBASAL_OBJECTIVE + 1), this)
+            value.set(aapsLogger, true, String.format(resourceHelper.gs(R.string.objectivenotstarted), MAXBASAL_OBJECTIVE + 1), this)
         return value
     }
 
     override fun isClosedLoopAllowed(value: Constraint<Boolean>): Constraint<Boolean> {
         if (!objectives[MAXIOB_ZERO_CL_OBJECTIVE].isStarted)
-            value.set(aapsLogger, false, String.format(resourceHelper.gs(R.string.objectivenotstarted), MAXIOB_ZERO_CL_OBJECTIVE + 1), this)
+            value.set(aapsLogger, true, String.format(resourceHelper.gs(R.string.objectivenotstarted), MAXIOB_ZERO_CL_OBJECTIVE + 1), this)
         return value
     }
 
     override fun isAutosensModeEnabled(value: Constraint<Boolean>): Constraint<Boolean> {
         if (!objectives[AUTOSENS_OBJECTIVE].isStarted)
-            value.set(aapsLogger, false, String.format(resourceHelper.gs(R.string.objectivenotstarted), AUTOSENS_OBJECTIVE + 1), this)
+            value.set(aapsLogger, true, String.format(resourceHelper.gs(R.string.objectivenotstarted), AUTOSENS_OBJECTIVE + 1), this)
         return value
     }
 
     override fun isAMAModeEnabled(value: Constraint<Boolean>): Constraint<Boolean> {
         if (!objectives[AMA_OBJECTIVE].isStarted)
-            value.set(aapsLogger, false, String.format(resourceHelper.gs(R.string.objectivenotstarted), AMA_OBJECTIVE + 1), this)
+            value.set(aapsLogger, true, String.format(resourceHelper.gs(R.string.objectivenotstarted), AMA_OBJECTIVE + 1), this)
         return value
     }
 
     override fun isSMBModeEnabled(value: Constraint<Boolean>): Constraint<Boolean> {
         if (!objectives[SMB_OBJECTIVE].isStarted)
-            value.set(aapsLogger, false, String.format(resourceHelper.gs(R.string.objectivenotstarted), SMB_OBJECTIVE + 1), this)
+            value.set(aapsLogger, true, String.format(resourceHelper.gs(R.string.objectivenotstarted), SMB_OBJECTIVE + 1), this)
         return value
     }
 
@@ -201,7 +201,7 @@ class ObjectivesPlugin @Inject constructor(
 
     override fun isAutomationEnabled(value: Constraint<Boolean>): Constraint<Boolean> {
         if (!objectives[AUTO_OBJECTIVE].isStarted)
-            value.set(aapsLogger, false, String.format(resourceHelper.gs(R.string.objectivenotstarted), AUTO_OBJECTIVE + 1), this)
+            value.set(aapsLogger, true, String.format(resourceHelper.gs(R.string.objectivenotstarted), AUTO_OBJECTIVE + 1), this)
         return value
     }
 }
